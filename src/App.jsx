@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes/index";
 import NotificationContainer from "./components/toastNotiffier";
 import { AuthProvider } from "./context/authContext";
+import { ProductsProvider } from "./context/productsContext";
 
 function App() {
   console.log("aca esta app");
@@ -10,7 +11,9 @@ function App() {
     <Suspense fallback={<h1>Cargando</h1>}>
       <NotificationContainer />
       <AuthProvider>
-        <RouterProvider router={router} />
+        <ProductsProvider>
+          <RouterProvider router={router} />
+        </ProductsProvider>
       </AuthProvider>
     </Suspense>
   );

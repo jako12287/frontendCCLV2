@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import Layout from "../components/layout";
@@ -8,6 +7,7 @@ import PrivateRoute from "./privateRoute";
 const Login = lazy(() => import("../views/login"));
 
 const Wellcome = lazy(() => import("../views/wellcome"));
+const ListProducts = lazy(() => import("../views/listProducts"));
 
 const NotFound = lazy(() => import("../views/noFound"));
 
@@ -18,20 +18,32 @@ const Router = [
     element: <Login />,
   },
 
-    {
-      id: "wellcome",
-      path: "/wellcome",
-      element: (
-        <PrivateRoute element={<Layout><Wellcome /></Layout>} />
-      ),
-    },
-  //   {
-  //     id: "list-products",
-  //     path: "/list-products",
-  //     element: (
-  //       <PrivateRoute allowedRoles={["admin"]} element={<Layout><ListEmployees /></Layout>} />
-  //     ),
-  //   },
+  {
+    id: "wellcome",
+    path: "/wellcome",
+    element: (
+      <PrivateRoute
+        element={
+          <Layout>
+            <Wellcome />
+          </Layout>
+        }
+      />
+    ),
+  },
+  {
+    id: "list-products",
+    path: "/list-products",
+    element: (
+      <PrivateRoute
+        element={
+          <Layout>
+            <ListProducts />
+          </Layout>
+        }
+      />
+    ),
+  },
   //   {
   //     id: "detail-employee",
   //     path: "/detail-employee/:id",
