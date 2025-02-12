@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import PropTypes from "prop-types";
 
 const PrivateRoute = ({ element }) => {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
 
-  if (!user || !user.token) {
+  if (!user || !token) {
     return <Navigate to="/" replace />;
   }
 
@@ -14,7 +14,7 @@ const PrivateRoute = ({ element }) => {
 };
 
 PrivateRoute.propTypes = {
-  element: PropTypes.element.isRequired,
+  element: PropTypes.node.isRequired,
 };
 
 export default PrivateRoute;

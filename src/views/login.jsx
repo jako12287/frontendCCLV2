@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/login.module.css";
 import Logo from "../assets/icons/logo.jpg";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { loginUser } from "../services/api";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import { useNotification } from "../components/toastNotiffier";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   password: yup.string().required("La contraseña es obligatoria"),
 });
 const Login = () => {
-  const { login } = useAuth();
+  const { login, token } = useAuth();
   const { notify } = useNotification();
   const navigation = useNavigate();
   const {
@@ -26,13 +26,18 @@ const Login = () => {
     formState: { errors },
   } = useForm({ mode: "onChange", resolver: yupResolver(schema) });
 
+  useEffect(() => {
+    if (token) {
+      navigation("/wellcome");
+    }
+  }, [token]);
+
   const onSubmit = async (data) => {
     try {
       const user = await loginUser(data?.user, data?.password);
-			console.log("TCL: onSubmit -> user", user)
       login(user.user, user.token);
       notify("success", user.message.es);
-      if (user.user.token) {
+      if (user?.token) {
         navigation("/wellcome");
       } else {
         navigation("/");

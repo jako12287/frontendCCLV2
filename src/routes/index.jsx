@@ -2,12 +2,12 @@
 import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
-// import Layout from "../components/layout";
-// import PrivateRoute from "./privateRoute";
+import Layout from "../components/layout";
+import PrivateRoute from "./privateRoute";
 
 const Login = lazy(() => import("../views/login"));
 
-// const Wellcome = lazy(() => import("../views/admin/wellcome"));
+const Wellcome = lazy(() => import("../views/wellcome"));
 
 const NotFound = lazy(() => import("../views/noFound"));
 
@@ -18,13 +18,13 @@ const Router = [
     element: <Login />,
   },
 
-  //   {
-  //     id: "wellcome",
-  //     path: "/wellcome",
-  //     element: (
-  //       <PrivateRoute allowedRoles={["admin"]} element={<Layout><Wellcome /></Layout>} />
-  //     ),
-  //   },
+    {
+      id: "wellcome",
+      path: "/wellcome",
+      element: (
+        <PrivateRoute element={<Layout><Wellcome /></Layout>} />
+      ),
+    },
   //   {
   //     id: "list-products",
   //     path: "/list-products",
