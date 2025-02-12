@@ -31,7 +31,6 @@ const CreateProductForm = ({ setOpenModal }) => {
     try {
       await createProduct(data);
       setOpenModal(false);
-      notify("success", "Producto registrado correctamente");
       refreshProducts();
     } catch (err) {
       console.error("Error en el registro:", err);

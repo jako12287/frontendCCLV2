@@ -6,7 +6,6 @@ import { AuthProvider } from "./context/authContext";
 import { ProductsProvider } from "./context/productsContext";
 
 function App() {
-  console.log("aca esta app");
   return (
     <Suspense fallback={<h1>Cargando</h1>}>
       <NotificationContainer />

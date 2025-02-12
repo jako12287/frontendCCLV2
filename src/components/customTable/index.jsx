@@ -32,14 +32,14 @@ const ProductsTable = ({ data, onOpenModal }) => {
         accessorKey: "quantity"
       },
       {
-        header: "Detalles",
-        accessorKey: "Detalles",
+        header: "Acciones",
+        accessorKey: "Acciones",
         cell: ({ row }) => (
           <button
             className={styles.detailsButton}
-            onClick={() => navigate(`/detail-employee/${row.original.id}`)}
+            onClick={() => navigate(`/detail-product/${row.original.id}`)}
           >
-            Ver detalles
+            Entrada / Salida / Eliminar
           </button>
         ),
       },

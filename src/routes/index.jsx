@@ -8,6 +8,7 @@ const Login = lazy(() => import("../views/login"));
 
 const Wellcome = lazy(() => import("../views/wellcome"));
 const ListProducts = lazy(() => import("../views/listProducts"));
+const DetailProduct = lazy(() => import("../views/detailProduct"));
 
 const NotFound = lazy(() => import("../views/noFound"));
 
@@ -44,13 +45,19 @@ const Router = [
       />
     ),
   },
-  //   {
-  //     id: "detail-employee",
-  //     path: "/detail-employee/:id",
-  //     element: (
-  //       <PrivateRoute allowedRoles={["admin"]} element={<Layout><DetailEmployee /></Layout>} />
-  //     ),
-  //   },
+  {
+    id: "detail-product",
+    path: "/detail-product/:id",
+    element: (
+      <PrivateRoute
+        element={
+          <Layout>
+            <DetailProduct />
+          </Layout>
+        }
+      />
+    ),
+  },
 
   {
     id: "notFound",
