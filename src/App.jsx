@@ -4,10 +4,11 @@ import router from "./routes/index";
 import NotificationContainer from "./components/toastNotiffier";
 import { AuthProvider } from "./context/authContext";
 import { ProductsProvider } from "./context/productsContext";
+import Loader from "./components/loader";
 
 function App() {
   return (
-    <Suspense fallback={<h1>Cargando</h1>}>
+    <Suspense fallback={<Loader/>}>
       <NotificationContainer />
       <AuthProvider>
         <ProductsProvider>
